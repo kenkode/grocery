@@ -1,0 +1,122 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <ul style="list-style-type:none">
+                <li class="card">
+                    <div class="header">
+                        <h4 class="title">Accessories</h4>
+                    </div>
+                    <div class="content">
+                      <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped" id="accessories_table">
+                              <thead>
+                                <th>Name</th>
+                                <th>Price</th>
+                              </thead>
+                              <tbody>
+                                {% for accessory in products.accessories %}
+                                  <tr>
+                                    <td>{{ accessory.name }}</td>
+                                    <td>{{ accessory.price }}</td>
+                                    <td>
+                                    <div clas="btn-group">
+                                    <button type="button" class="remove_product btn btn-default" data-id="{{ accessory.id }}" data-type="1"><i class="pe-7s-trash"></i></button>
+                                    <button type="button" class="edit btn btn-default" data-id="{{ accessory.id }}" data-type="1"><i class="pe-7s-edit"></i>
+                                    </td>
+                                  </tr>
+                                {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                      <hr>
+                      <div class="footer">
+                        <form class="form-inline" action="#" method="post">
+                          <div class="form-group">
+                            <input type="text" name="acc_name" id="acc_name" class="form-control" placeholder="Accessory name" required="required">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" name="acc_price" id="acc_price" class="form-control" placeholder="Accessory price" required="required">
+                          </div>
+                          <button class="btn btn-primary btn-fill" type="button" id="add_accessory">Add Accessory</button>
+                        </form>
+                      </div>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="header">
+                        <h4 class="title">Bulk Gas</h4>
+                    </div>
+                    <div class="content">
+                      <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped" id="gas_table">
+                              <thead>
+                                <th></th>
+                                <th>Price</th>
+                              </thead>
+                              <tbody>
+                                {% for gas in products.gases %}
+                                  <tr>
+                                    <td>Current price</td>
+                                    <td>{{ gas.price }}</td>
+                                  </tr>
+                                {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                      <hr>
+                      <div class="footer">
+                        <form class="form-inline" action="#" method="post">
+                          <div class="form-group">
+                            <input type="number" name="gas_size" id="price" class="form-control" placeholder="Price per kg" required="required">
+                          </div>
+                          <button class="btn btn-primary btn-fill" type="button" id="add_gas">Update Price</button>
+                        </form>
+                      </div>
+                    </div>
+                </li>
+                <li class="card">
+                    <div class="header">
+                        <h4 class="title">Services</h4>
+                    </div>
+                    <div class="content">
+                      <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped" id="service_table">
+                              <thead>
+                                <th>Name</th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                    {% for service in products.services %}
+                                      <tr>
+                                        <td>{{ service.name }}</td>
+                                        <td>
+                                        <div class="btn-group">
+                                        <button type="button" class="remove_product btn btn-default" data-id="{{ service.id }}" data-type="2"><i class="pe-7s-trash"></i></button>
+                                        <button type="button" class="edit btn btn-default" data-id="{{ service.id }}" data-type="2"><i class="pe-7s-edit"></i></button></div>
+                                        </td>
+                                      </tr>
+                                    {% endfor %}
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <hr>
+                      <div class="footer">
+                        <form class="form-inline" action="#" method="post">
+                          <div class="form-group">
+                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="Service name" required="required">
+                          </div>
+                          <button class="btn btn-primary btn-fill" type="button" id="add_service">Add Service</button>
+                        </form>
+                      </div>
+                    </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-8">
+
+            </div>
+        </div>
+    </div>
+</div>

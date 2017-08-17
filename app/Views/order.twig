@@ -1,0 +1,91 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row card">
+      <div class="col-md-2 col-md-2">
+        <h4><small>Order Type:</small> {{ results.order.type }}</h4>
+      </div>
+      <div class="col-md-2 col-md-2">
+        <h4><small>Order Price:</small> {{ results.order.price }}</h4>
+      </div>
+      <div class="col-md-5 col-md-5">
+        <h4><small>Order Date:</small> {{ results.order.created_at }}</h4>
+      </div>
+      <div class="col-md-3 col-md-3">
+        <h4 id="status"><small>Status</small> <span>{% if results.order.status == 0 %} {{ 'Pending' }} {% elseif results.order.status == 1 %} {{ 'Complete' }} {% endif%}</span></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-lg-4">
+        <div class="card">
+          <div class="content">
+            <div class="author">
+              <h4 class="title" style="text-align:center">User Data</h4>
+              <hr>
+              <div>
+                <small>User ID</small>
+                <p>{{ 'GX-CST' ~ results.user.id }}</p>
+                <small>User name</small>
+                <p>{{ results.user.fname ~ ' ' ~ results.user.lname }}</p>
+                <small>Phone Number</small>
+                <p>{{ '+' ~ results.user.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="card">
+          <div class="content">
+            <div class="author">
+              <h4 class="title" style="text-align:center">Items</h4>
+              <hr>
+              <div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Item name</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in results.items %}
+                    <tr>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.quantity }}</td>
+                      <td>{{ item.price }}</td>
+                      <td></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="card">
+          <div class="content">
+            <div class="author">
+              <h4 class="title" style="text-align:center">Delivery location Data</h4>
+              <hr>
+              <div>
+                <small>Location name</small>
+                <p>{{ results.location.address }}</p>
+                <small>Location description</small>
+                <p>{{ results.location.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% if results.order.status == 0 %} {% set name = 'Mark Complete' %} {% elseif results.order.status == 1 %} {% set name = 'Mark Incomplete' %} {% endif %}
+      <div class="col-md-offset-8 col-md-4 col-md-4">
+        <button class="btn btn-info btn-fill pull-right" id="update_status" data-order="{{ results.order.id }}" data-status="{{ results.order.status }}">{{ name }}</button>
+      </div>
+    </div>
+  </div>
+</div>

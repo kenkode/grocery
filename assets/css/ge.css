@@ -1,0 +1,7 @@
+.order_container {
+  padding: 4dp;
+}
+
+.card.order_container:hover {
+  background: rgba(51,122,183,.1);
+}

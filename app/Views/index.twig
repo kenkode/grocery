@@ -1,0 +1,42 @@
+<style>
+  .yellow-card {
+    background: rgba(255, 252, 0, .2);
+  }
+
+</style>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row" id="orders_container">
+      {% if orders %} {% for order in orders %}
+      <a class="col-md-4 col-lg-4 col-sm-6" href="{{ path_for('order', {'order_id' : order.order_id}) }}">
+        <div class="card order_container {% if order.status == 0 %}{{ 'yellow-card' }}{% endif %}">
+          <div class="header">
+            <small class="title">Customer Name: <strong>{{ order.fname ~ ' ' ~ order.lname }}</strong></small>
+            <p class="category"><small>Order No: </small> {{ order.order_id }}</p>
+            <p class="category"><small>Order Type: </small> {{ order.type }}</p>
+            <p class="category">
+              <small>Price </small> {{ order.price }}</p>
+            <p class="category"><i class="pe-7s-map-marker"></i> Location: {{ order.location }}</p>
+          </div>
+          <div class="content">
+
+            <div class="footer">
+              <hr>
+              <div class="stats">
+                <i class="pe-7s-clock"></i> Order made on {{ order.created_at }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </a> {% endfor %} {% else %}
+      <div class="col-md-offset-3 col-lg-offset-3 col-sm-offset-3 col-md-6 col-lg-6 col-sm-6">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">No orders</h4>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
